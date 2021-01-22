@@ -1,0 +1,8 @@
+# JavaScript
+node_modules/
+.node_modules/
+.eslintcache
+unpackage/debug
+unpackage/release
+unpackage/dist/build/
+unpackage/dist/dev/
