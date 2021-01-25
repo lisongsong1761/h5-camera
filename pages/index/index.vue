@@ -32,7 +32,7 @@
 	const safeArea = uni.getSystemInfoSync().safeArea
 	const safeAreaBottom = uni.getSystemInfoSync().safeArea.bottom - uni.getSystemInfoSync().safeArea.height
 	// const pixelRatio = uni.getSystemInfoSync().pixelRatio
-	const pixelRatio = 5 // 4
+	const pixelRatio = 3 // 4
 	const bottomHeight = uni.upx2px(200)
 	// 可见高度
 	const realHeight = safeArea.height - bottomHeight
@@ -58,6 +58,8 @@
 			this.token = option.token
 			this.cameraWidth = option.cameraWidth
 			this.cameraHeight = option.cameraHeight
+			
+			console.log(JSON.stringify(option));
 		},
 		onShow() {
 			this.$nextTick(() => {
@@ -249,10 +251,22 @@
 					let canPixelRatio = 4
 					// let canPixelRatio = 8
 					if(this.type === 1) {
+						/* myCanvas.width = basicData*0.1867*canPixelRatio;
+						myCanvas.height = basicData*canPixelRatio; */
+						
 						myCanvas.width = basicData*0.1867*canPixelRatio;
 						myCanvas.height = basicData*canPixelRatio;
-						
 						myCanvas.getContext('2d').drawImage(this.myVideo, -(screenWidth-basicData*0.1867)/2*canPixelRatio, -44*canPixelRatio, screenWidth*canPixelRatio, screenHeight*canPixelRatio);
+						
+						/* myCanvas.width = basicData*0.1867;
+						myCanvas.height = basicData;
+						
+						myCanvas.getContext('2d').drawImage(this.myVideo, (screenWidth-basicData*0.1867)/2, 44, basicData*0.1867*canPixelRatio, basicData*canPixelRatio, 0, 0, basicData*0.1867*canPixelRatio, basicData*canPixelRatio); */
+						/* myCanvas.width = screenWidth*canPixelRatio;
+						myCanvas.height = screenHeight*canPixelRatio;
+						
+						myCanvas.getContext('2d').drawImage(this.myVideo, 0, 0, screenWidth*canPixelRatio, screenHeight*canPixelRatio, 0, 0, screenWidth*canPixelRatio*2, screenHeight*canPixelRatio*2);
+						// , 0, 0, screenWidth*canPixelRatio, screenHeight*canPixelRatio */
 					}
 					
 					/* let imageData = myCanvas.getContext('2d').getImageData(0,0,screenWidth*canPixelRatio, screenHeight*canPixelRatio);
@@ -271,7 +285,6 @@
 					
 					let imageData = myCanvas.getContext('2d').getImageData(0,0,screenWidth*canPixelRatio, screenHeight*canPixelRatio)
 					let pixels = imageData.data
-					
 					
 					
 					// 处理像素点
